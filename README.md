@@ -1,5 +1,5 @@
 ##Description:
-This repository is base boilerplate for stack Angular2 + Firebase, uses "Twitter Bootstrap" for style 
+This is a complete bundle for development of the app on AngularJS 2 + Firebase ( REST Backend ) + Bootstrap 3 tech stack. Simple blog and authorization are implemented as a demo
 
 ##Requirments:
 - Angular CLI - [Angular-cli github](https://github.com/angular/angular-cli)
