@@ -22,16 +22,15 @@ export class AuthUserGuard implements CanActivate, CanActivateChild {
 
     isLoggedIn(url: string) {
 
-        if (this.authService.isAuth()) {
-            return true;
-        }
+        this.authService.isAuth().subscribe(r=> {
+            if (!r) {
+                this.authService.redirectUrl = url;
+                this.router.navigate(['/sign-in']);
+            }
+        });
 
-        // Store the attempted URL for redirecting
-        this.authService.redirectUrl = url;
+        return this.authService.isAuth();
 
-        // Navigate to the login page with extras
-        this.router.navigate(['/sign-in']);
-        return false;
     }
 
 }

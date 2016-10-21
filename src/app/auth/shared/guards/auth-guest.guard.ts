@@ -11,7 +11,6 @@ export class AuthGuestGuard implements CanActivate, CanActivateChild {
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-
         return this.isLoggedIn();
     }
 
@@ -21,12 +20,14 @@ export class AuthGuestGuard implements CanActivate, CanActivateChild {
 
     isLoggedIn() {
 
-        if (!this.authService.isAuth()) {
-            return true;
-        }
+        this.authService.isGuest().subscribe(r=> {
 
-        this.router.navigate(['/']);
-        return false;
+            if (!r) {
+                this.router.navigate(['/']);
+            }
+        });
+
+        return this.authService.isGuest();
     }
 
 }

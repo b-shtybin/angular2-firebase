@@ -11,7 +11,7 @@ export class SharedHelperService {
     constructor(private authService: AuthService) {
     }
 
-    isUserLoggedIn(): boolean {
-        return this.authService.isAuth();
+    isUserLoggedIn() {
+        return this.authService.authState;
     }
 }
